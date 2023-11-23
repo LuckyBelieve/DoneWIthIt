@@ -1,23 +1,28 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
+import Button from "../components/Button";
 
 function WelcomeScreen(props) {
   return (
     <ImageBackground
+      blurRadius={5}
       style={styles.background}
       source={require("../assets/background.jpg")}
     >
-        <View style={styles.logoContainer}>
-        <Image source={require("../assets/logo-red.png")} style={styles.logo}/>
-        <Text>sell what you don't need</Text>
-        </View>
-      <View style={styles.loginButton}>
-        <Text>This is the first</Text>
+      <View style={styles.logoContainer}>
+        <Image source={require("../assets/logo-red.png")} style={styles.logo} />
+        <Text style={styles.tagLine}>sell what you don't need</Text>
       </View>
-      <View style={styles.registerButton}>
-        <Text>This is the second</Text>
+      <View style={styles.buttonsContainer}>
+        <Button title={"Login"} onpress={() => console.log("login")} />
+        <Button
+          title={"Register"}
+          color="secondary"
+          onpress={() => console.log("sign up")}
+        />
       </View>
+
       <StatusBar style="auto" />
     </ImageBackground>
   );
@@ -26,26 +31,25 @@ const styles = StyleSheet.create({
   background: {
     flex: 1,
     justifyContent: "flex-end",
-    alignItems:"center"
+    alignItems: "center",
   },
-  loginButton: {
-    width:"100%",
-    height: 70,
-    backgroundColor: "#fc5c65",
+  buttonsContainer: {
+    width: "100%",
+    padding: 20,
   },
-  registerButton: {
-    width:"100%",
-    height: 70,
-    backgroundColor: "#4ecdc4",
+  logo: {
+    width: 100,
+    height: 100,
   },
-  logo:{
-    width:100,
-    height:100,
+  logoContainer: {
+    alignItems: "center",
+    position: "absolute",
+    top: 70,
   },
-  logoContainer:{
-    alignItems:"center",
-    position:"absolute",
-    top:70
-  }
+  tagLine: {
+    fontSize: 25,
+    fontWeight: "600",
+    paddingVertical: 20,
+  },
 });
 export default WelcomeScreen;

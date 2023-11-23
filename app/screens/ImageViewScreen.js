@@ -1,39 +1,47 @@
-import React from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import React from "react";
+import { Image, StyleSheet, View } from "react-native";
+import colors from "../config/colors";
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-import colors from '../config/colors';
+import {MaterialCommunityIcons} from "@expo/vector-icons"
 function ImageViewScreen(props) {
-    return (
-        <View style={styles.container}>
-            <View style={styles.closeButton}></View>
-            <View style={styles.deleteButton}></View>
-            <Image resizeMode='contain' style={styles.Image} source={require("../assets/chair.jpg")} />
+  return (
+    <SafeAreaView style={styles.container}>
+      <View>
+        <View style={styles.closeButton}>
+          <MaterialCommunityIcons name="close" color={"white"} size={35}/>
         </View>
-    );
+        <View style={styles.deleteButton}>
+        <MaterialCommunityIcons name="trash-can-outline" color={"white"} size={35}/>
+
+        </View>
+      </View>
+      <Image
+        resizeMode="contain"
+        style={styles.Image}
+        source={require("../assets/chair.jpg")}
+      />
+      <StatusBar style="auto" />
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
-    closeButton:{
-     width:50,
-     height:50,
-     backgroundColor:"#fc5c65",
-     position:"absolute",
-     left:10
-    },
-    container:{
-        backgroundColor:colors.black
-    },
-    deleteButton:{
-        width:50,
-        height:50,
-        backgroundColor:colors.secondary,
-        position:"absolute",
-        right:10
-
-    },
-    Image:{
-       width:"100%",
-       height:"100%"
-    }
-})
+  closeButton: {
+    position: "absolute",
+    left: 10,
+  },
+  container: {
+    backgroundColor: colors.black,
+  },
+  deleteButton: {
+    position: "absolute",
+    right: 10,
+  },
+  Image: {
+    width: "100%",
+    height: "100%",
+  },
+});
 export default ImageViewScreen;
