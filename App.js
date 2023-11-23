@@ -5,11 +5,13 @@ import {useDeviceOrientation } from '@react-native-community/hooks'
 import Card from './app/components/Card';
 import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
 import ImageViewScreen from './app/screens/ImageViewScreen';
+import MessagesScreen from './app/screens/MessagesScreen';
 export default function App() {
   const orientation  = useDeviceOrientation();
   return (
   //  <ListingDetailsScreen/>
-  <ImageViewScreen/>
+  // <ImageViewScreen/>
+  <MessagesScreen/>
   );
 }
 const styles = StyleSheet.create({
