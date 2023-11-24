@@ -3,10 +3,12 @@ import { Image, StyleSheet, View } from "react-native";
 import AppText from "../components/AppText";
 import colors from "../config/colors";
 import ListItem from "../components/ListItem";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { StatusBar } from "expo-status-bar";
 
 function ListingDetailsScreen(props) {
   return (
-    <View>
+    <SafeAreaView>
       <Image style={styles.image} source={require("../assets/jacket.jpg")} />
       <View style={styles.detailsContainer}>
         <AppText style={styles.title}>Red jacket for sale</AppText>
@@ -19,7 +21,8 @@ function ListingDetailsScreen(props) {
         />
         </View>
       </View>
-    </View>
+      <StatusBar style="auto"/>
+    </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({

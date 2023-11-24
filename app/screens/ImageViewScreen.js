@@ -6,7 +6,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import {MaterialCommunityIcons} from "@expo/vector-icons"
 function ImageViewScreen(props) {
-  return (
+  return (  
     <SafeAreaView style={styles.container}>
       <View>
         <View style={styles.closeButton}>
