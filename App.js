@@ -6,6 +6,7 @@ import {
   Alert,
   Platform,
   ImageBackground,
+  TextInput,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useDeviceOrientation } from "@react-native-community/hooks";
@@ -18,14 +19,21 @@ import ListItem from "./app/components/ListItem";
 import colors from "./app/config/colors";
 import AccountScreen from "./app/screens/AccountScreen";
 import ListingsScreen from "./app/screens/ListingsScreen";
+import { useState } from "react";
+import AppTextInput from "./app/components/AppTextInput";
 export default function App() {
   const orientation = useDeviceOrientation();
+  const [text, setText] = useState("");
   return (
-     <ListingDetailsScreen/>
+    //  <ListingDetailsScreen/>
     // <ImageViewScreen/>
     // <MessagesScreen/>
     // <AccountScreen/>
     // <ListingsScreen/>
+    <SafeAreaView>
+      <AppTextInput placeholder={"Email"} icon={"email"}/>
+      <StatusBar style="auto" />
+    </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
