@@ -7,6 +7,7 @@ import {
   Platform,
   ImageBackground,
   TextInput,
+  Switch,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useDeviceOrientation } from "@react-native-community/hooks";
@@ -21,19 +22,33 @@ import AccountScreen from "./app/screens/AccountScreen";
 import ListingsScreen from "./app/screens/ListingsScreen";
 import { useState } from "react";
 import AppTextInput from "./app/components/AppTextInput";
+import AppPicker from "./app/components/AppPicker";
+import LoginScreen from "./app/screens/LoginScreen";
+const categories = [
+  {
+    label: "Furniture",
+    value: 1,
+  },
+  {
+    label: "Clothing",
+    value: 2,
+  },
+  {
+    label: "Cameras",
+    value: 3,
+  },
+];
 export default function App() {
   const orientation = useDeviceOrientation();
-  const [text, setText] = useState("");
+  const [isNew, setIsNew] = useState(false);
+  const [category, setCategory] = useState(categories[0].label);
   return (
     //  <ListingDetailsScreen/>
     // <ImageViewScreen/>
     // <MessagesScreen/>
     // <AccountScreen/>
     // <ListingsScreen/>
-    <SafeAreaView>
-      <AppTextInput placeholder={"Email"} icon={"email"}/>
-      <StatusBar style="auto" />
-    </SafeAreaView>
+    <LoginScreen/>
   );
 }
 const styles = StyleSheet.create({
