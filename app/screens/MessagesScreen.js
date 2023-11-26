@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
-import ListItem from "../components/ListItem";
+import ListItem from "../components/Lists/ListItem";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
-import ListSeparator from "../components/ListSeparator";
-import ListItemDeleteAction from "../components/ListItemDeleteAction";
+import ListSeparator from "../components/Lists/ListSeparator";
+import ListItemDeleteAction from "../components/Lists/ListItemDeleteAction";
 
 const initialMessages = [
   {
@@ -64,11 +64,11 @@ function MessagesScreen(props) {
       <StatusBar style="auto" />
     </SafeAreaView>
   );
-} 
+}
 const styles = StyleSheet.create({
-    screen:{
-        flex:1
-    }
-})
+  screen: {
+    flex: 1,
+  },
+});
 
 export default MessagesScreen;

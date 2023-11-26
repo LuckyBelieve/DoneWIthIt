@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     gap: 10,
     width: "100%",
     padding: 15,
-    marginVertical: 15,
+    marginVertical: 10,
   },
 });
 export default AppTextInput;

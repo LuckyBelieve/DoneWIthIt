@@ -2,15 +2,12 @@ import React, { useState } from "react";
 import {
   Button,
   FlatList,
-  Platform,
   StyleSheet,
-  TextInput,
   TouchableWithoutFeedback,
   View,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../config/colors";
-import defaultStyles from "../config/styles";
 import AppText from "./AppText";
 import { Modal } from "react-native";
 import PickerItem from "./PickerItem";

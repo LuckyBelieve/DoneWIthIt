@@ -1,11 +1,11 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import ListItem from "../components/ListItem";
+import ListItem from "../components/Lists/ListItem";
 import { FlatList, StyleSheet, View } from "react-native";
 import colors from "../config/colors";
 import Icon from "../components/Icon";
-import ListSeparator from "../components/ListSeparator";
+import ListSeparator from "../components/Lists/ListSeparator";
 const menuItems = [
   {
     title: "My listings",
@@ -53,7 +53,13 @@ function AccountScreen(props) {
       </View>
       <ListItem
         title={"Logout"}
-        ImageComponent={<Icon name={"logout"} backgroundColor="#ffe66d" onPress={() => console.log("clickedlistings")} />}
+        ImageComponent={
+          <Icon
+            name={"logout"}
+            backgroundColor="#ffe66d"
+            onPress={() => console.log("clickedlistings")}
+          />
+        }
       />
       <StatusBar style="auto" />
     </SafeAreaView>

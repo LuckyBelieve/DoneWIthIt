@@ -16,7 +16,7 @@ import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
 import ImageViewScreen from "./app/screens/ImageViewScreen";
 import MessagesScreen from "./app/screens/MessagesScreen";
 import Icon from "./app/components/Icon";
-import ListItem from "./app/components/ListItem";
+import ListItem from "./app/components/Lists/ListItem";
 import colors from "./app/config/colors";
 import AccountScreen from "./app/screens/AccountScreen";
 import ListingsScreen from "./app/screens/ListingsScreen";
@@ -24,6 +24,8 @@ import { useState } from "react";
 import AppTextInput from "./app/components/AppTextInput";
 import AppPicker from "./app/components/AppPicker";
 import LoginScreen from "./app/screens/LoginScreen";
+import ListingEditScreen from "./app/screens/ListingEditScreen";
+import RegisterScreen from "./app/screens/RegisterScreen";
 const categories = [
   {
     label: "Furniture",
@@ -48,7 +50,9 @@ export default function App() {
     // <MessagesScreen/>
     // <AccountScreen/>
     // <ListingsScreen/>
-    <LoginScreen/>
+    // <LoginScreen/>
+    <ListingEditScreen />
+    // <RegisterScreen/>
   );
 }
 const styles = StyleSheet.create({
