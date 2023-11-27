@@ -5,6 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { AppForm, AppFormField, SubmitButton } from "../components/Forms";
 import * as yup from "yup";
 import AppFormPicker from "../components/Forms/AppFormPicker";
+import CategoryPickerItem from "../components/CategoryPickerItem";
 const validationSchema = yup.object().shape({
   title: yup.string().required().min(3).label("Title"),
   price: yup.number().required().min(1).max(10000).label("Price"),
@@ -12,9 +13,9 @@ const validationSchema = yup.object().shape({
   description: yup.string().min(5).max(300).label("Description"),
 });
 const categories = [
-  { label: "furniture", value: 1 },
-  { label: "Clothing", value: 2 },
-  { label: "Camera", value: 3 },
+  { label: "furniture", value: 1,backgroundColor:"red",icon:"apps" },
+  { label: "Clothing", value: 2 ,backgroundColor:"green",icon:"email" },
+  { label: "Camera", value: 3 ,backgroundColor:"blue",icon:"lock"},
 ];
 function ListingEditScreen(props) {
   return (
@@ -40,9 +41,11 @@ function ListingEditScreen(props) {
         placeholder={"Price"}
         />
         <AppFormPicker
+        numberOfColumns={3}
           name={"category"}
           placeholder={"Category"}
           items={categories}
+          PickerItemComponent={CategoryPickerItem}
         />
         <AppFormField
           name={"description"}

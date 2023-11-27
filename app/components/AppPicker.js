@@ -11,7 +11,7 @@ import colors from "../config/colors";
 import AppText from "./AppText";
 import { Modal } from "react-native";
 import PickerItem from "./PickerItem";
-function AppPicker({ items, icon, placeholder, selectedItem, onSelectItem }) {
+function AppPicker({ items, icon, placeholder, selectedItem, onSelectItem,PickerItemComponent = PickerItem,numberOfColumns }) {
   const [ModalVisible, setModalVisible] = useState(false);
   return (
     <>
@@ -24,7 +24,7 @@ function AppPicker({ items, icon, placeholder, selectedItem, onSelectItem }) {
               color={colors.medium}
             />
           )}
-        
+
           <AppText style={styles.text}>
             {selectedItem ? selectedItem : placeholder}
           </AppText>
@@ -40,9 +40,10 @@ function AppPicker({ items, icon, placeholder, selectedItem, onSelectItem }) {
         <FlatList
           data={items}
           keyExtractor={(item) => item.value.toString()}
+          numColumns={numberOfColumns}
           renderItem={({ item }) => (
-            <PickerItem
-              label={item.label}
+            <PickerItemComponent
+              item={item}
               onPress={() => {
                 setModalVisible(false);
                 onSelectItem(item.label);
@@ -67,10 +68,10 @@ const styles = StyleSheet.create({
   },
   text: {
     flex: 1,
-    color:colors.medium
+    color: colors.medium,
   },
-  placeholder:{
-    color:colors.medium
-  }
+  placeholder: {
+    color: colors.medium,
+  },
 });
 export default AppPicker;
