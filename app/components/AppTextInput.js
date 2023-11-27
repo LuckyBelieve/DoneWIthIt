@@ -10,6 +10,7 @@ function AppTextInput({ icon, ...otherProps }) {
         <MaterialCommunityIcons name={icon} size={20} color={colors.medium} />
       )}
       <TextInput
+        placeholderTextColor={colors.medium}
         autoCapitalize="none" 
         style={defaultStyles.text}
         {...otherProps}

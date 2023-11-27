@@ -24,6 +24,7 @@ function AppPicker({ items, icon, placeholder, selectedItem, onSelectItem }) {
               color={colors.medium}
             />
           )}
+        
           <AppText style={styles.text}>
             {selectedItem ? selectedItem : placeholder}
           </AppText>
@@ -66,6 +67,10 @@ const styles = StyleSheet.create({
   },
   text: {
     flex: 1,
+    color:colors.medium
   },
+  placeholder:{
+    color:colors.medium
+  }
 });
 export default AppPicker;

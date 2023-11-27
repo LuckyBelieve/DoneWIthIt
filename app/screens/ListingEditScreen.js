@@ -8,21 +8,14 @@ import AppFormPicker from "../components/Forms/AppFormPicker";
 const validationSchema = yup.object().shape({
   title: yup.string().required().min(3).label("Title"),
   price: yup.number().required().min(1).max(10000).label("Price"),
-  category: yup.string().required().label("Category"),
+  category: yup.string().required().label("Category").nullable(),
   description: yup.string().min(5).max(300).label("Description"),
 });
-const items = [
-    {
-        label:"furniture",value:1
-    },
-    {
-        label:"Gaming",value:2
-    }
-    ,
-    {
-        label:"dfjfk",value:3
-    }
-]
+const categories = [
+  { label: "furniture", value: 1 },
+  { label: "Clothing", value: 2 },
+  { label: "Camera", value: 3 },
+];
 function ListingEditScreen(props) {
   return (
     <SafeAreaView style={styles.container}>
@@ -39,19 +32,33 @@ function ListingEditScreen(props) {
         <AppFormField 
         name={"title"} 
         placeholder={"Title"}
+        maxLength={255}
          />
-         <AppFormField name={"price"} placeholder={"Price"} />
-         <AppFormPicker name={"category"} placeholder={"Category"} items={items}/>
-         <AppFormField name={"description"} placeholder={"Description"} multiline={"true"}/>
-         <SubmitButton title={"Post"}/>
+        <AppFormField 
+        name={"price"} 
+        maxLength={8} 
+        placeholder={"Price"}
+        />
+        <AppFormPicker
+          name={"category"}
+          placeholder={"Category"}
+          items={categories}
+        />
+        <AppFormField
+          name={"description"}
+          placeholder={"Description"}
+          multiline
+          numberOfLines={3}
+        />
+        <SubmitButton title={"Post"} />
       </AppForm>
       <StatusBar style="auto" />
     </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
-    container:{
-        paddingHorizontal:10
-    }
-})
+  container: {
+    paddingHorizontal: 10,
+  },
+});
 export default ListingEditScreen;

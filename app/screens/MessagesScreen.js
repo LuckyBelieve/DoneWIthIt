@@ -9,20 +9,20 @@ import ListItemDeleteAction from "../components/Lists/ListItemDeleteAction";
 const initialMessages = [
   {
     id: 1,
-    title: "title1",
-    description: "description1",
+    title: "lucky Believe",
+    description: "what is the total amount of the couch",
     image: require("../assets/mosh.jpg"),
   },
   {
     id: 2,
-    title: "title2",
-    description: "description2",
+    title: "mosh hamedani",
+    description: "Hello there! I would like to discuss on the price for the camera that you posted",
     image: require("../assets/mosh.jpg"),
   },
   {
     id: 3,
-    title: "title3",
-    description: "description3",
+    title: "john smith",
+    description: "the jacket is so good looking I wanna buy it",
     image: require("../assets/mosh.jpg"),
   },
 ];
@@ -34,6 +34,7 @@ function MessagesScreen(props) {
   };
   return (
     <SafeAreaView style={styles.screen}>
+      <View style={styles.container}>
       <FlatList
         data={messages}
         keyExtractor={(message) => message.id.toString()}
@@ -61,6 +62,7 @@ function MessagesScreen(props) {
           ]);
         }}
       />
+      </View>
       <StatusBar style="auto" />
     </SafeAreaView>
   );
@@ -69,6 +71,9 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
   },
+  container:{
+    flex:1
+  }
 });
 
 export default MessagesScreen;

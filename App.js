@@ -47,11 +47,11 @@ export default function App() {
   return (
     //  <ListingDetailsScreen/>
     // <ImageViewScreen/>
-    // <MessagesScreen/>
+    <MessagesScreen/>
     // <AccountScreen/>
     // <ListingsScreen/>
     // <LoginScreen/>
-    <ListingEditScreen />
+    // <ListingEditScreen />
     // <RegisterScreen/>
   );
 }
