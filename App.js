@@ -1,64 +1,35 @@
-import { StatusBar } from "expo-status-bar";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Alert,
-  Platform,
-  ImageBackground,
-  TextInput,
-  Switch,
-} from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { useDeviceOrientation } from "@react-native-community/hooks";
-import Card from "./app/components/Card";
-import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
-import ImageViewScreen from "./app/screens/ImageViewScreen";
-import MessagesScreen from "./app/screens/MessagesScreen";
-import Icon from "./app/components/Icon";
-import ListItem from "./app/components/Lists/ListItem";
-import colors from "./app/config/colors";
-import AccountScreen from "./app/screens/AccountScreen";
-import ListingsScreen from "./app/screens/ListingsScreen";
-import { useState } from "react";
-import AppTextInput from "./app/components/AppTextInput";
-import AppPicker from "./app/components/AppPicker";
-import LoginScreen from "./app/screens/LoginScreen";
-import ListingEditScreen from "./app/screens/ListingEditScreen";
-import RegisterScreen from "./app/screens/RegisterScreen";
-const categories = [
-  {
-    label: "Furniture",
-    value: 1,
-  },
-  {
-    label: "Clothing",
-    value: 2,
-  },
-  {
-    label: "Cameras",
-    value: 3,
-  },
-];
-export default function App() {
-  const orientation = useDeviceOrientation();
-  const [isNew, setIsNew] = useState(false);
-  const [category, setCategory] = useState(categories[0].label);
-  return (
-    //  <ListingDetailsScreen/>
-    // <ImageViewScreen/>
-    // <MessagesScreen/>
-    // <AccountScreen/>
-    // <ListingsScreen/>
-    // <LoginScreen/>
-    <ListingEditScreen />
-    // <RegisterScreen/>
-  );
+import { StatusBar } from 'expo-status-bar';
+import React, { useEffect, useState } from 'react';
+import { Alert, StyleSheet, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import ImageInput from './app/components/ImageInput';
+import * as ImagePicker from "expo-image-picker";
+import Button from './app/components/Button';
+function App(props) {
+  const [imageuri,setImageUri] = useState(null)
+  const requestPermission = async ()=>{
+    const { granted } = await ImagePicker.requestMediaLibraryPermissionsAsync()
+  }
+  useEffect(()=>{
+    requestPermission();
+  },[])
+  const selectImage = async ()=>{
+    try {
+      const {assets} = await ImagePicker.launchImageLibraryAsync();
+      setImageUri(assets[0].uri);
+    } catch (error) {
+      Alert.alert("Error message","an error occured while seleting the image")
+    }
+  }
+ return (
+<SafeAreaView style={styles.container}>
+  <ImageInput imageUri={imageuri}/>
+  <Button title={"Select an Image"} onpress={selectImage}/>
+<StatusBar style='auto'/>
+</SafeAreaView>
+ );
 }
 const styles = StyleSheet.create({
-  cardContainer: {
-    paddingTop: 80,
-    padding: 20,
-    backgroundColor: "#f8f4f4",
-  },
-});
+container:{}
+})
+export default App;
