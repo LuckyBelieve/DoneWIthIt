@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import ImageInput from './app/components/ImageInput';
 import * as ImagePicker from "expo-image-picker";
 import Button from './app/components/Button';
+import ListingEditScreen from './app/screens/ListingEditScreen';
 function App(props) {
   const [imageuri,setImageUri] = useState(null)
   const requestPermission = async ()=>{
@@ -23,8 +24,7 @@ function App(props) {
   }
  return (
 <SafeAreaView style={styles.container}>
-  <ImageInput imageUri={imageuri}/>
-  <Button title={"Select an Image"} onpress={selectImage}/>
+  <ListingEditScreen/>
 <StatusBar style='auto'/>
 </SafeAreaView>
  );
