@@ -6,16 +6,20 @@ import { AppForm, AppFormField, SubmitButton } from "../components/Forms";
 import * as yup from "yup";
 import AppFormPicker from "../components/Forms/AppFormPicker";
 import CategoryPickerItem from "../components/CategoryPickerItem";
+import FormImagePicker from "../components/Forms/FormImagePicker";
+
 const validationSchema = yup.object().shape({
   title: yup.string().required().min(3).label("Title"),
   price: yup.number().required().min(1).max(10000).label("Price"),
   category: yup.string().required().label("Category").nullable(),
   description: yup.string().min(5).max(300).label("Description"),
+  images: yup.array().min(1, "please select atleast one image"),
 });
+
 const categories = [
-  { label: "furniture", value: 1,backgroundColor:"red",icon:"apps" },
-  { label: "Clothing", value: 2 ,backgroundColor:"green",icon:"email" },
-  { label: "Camera", value: 3 ,backgroundColor:"blue",icon:"lock"},
+  { label: "furniture", value: 1, backgroundColor: "red", icon: "apps" },
+  { label: "Clothing", value: 2, backgroundColor: "green", icon: "email" },
+  { label: "Camera", value: 3, backgroundColor: "blue", icon: "lock" },
 ];
 function ListingEditScreen(props) {
   return (
@@ -26,22 +30,16 @@ function ListingEditScreen(props) {
           price: "",
           category: null,
           description: "",
+          images: [],
         }}
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
-        <AppFormField 
-        name={"title"} 
-        placeholder={"Title"}
-        maxLength={255}
-         />
-        <AppFormField 
-        name={"price"} 
-        maxLength={8} 
-        placeholder={"Price"}
-        />
+        <FormImagePicker name={"images"} />
+        <AppFormField name={"title"} placeholder={"Title"} maxLength={255} />
+        <AppFormField name={"price"} maxLength={8} placeholder={"Price"} />
         <AppFormPicker
-        numberOfColumns={3}
+          numberOfColumns={3}
           name={"category"}
           placeholder={"Category"}
           items={categories}
