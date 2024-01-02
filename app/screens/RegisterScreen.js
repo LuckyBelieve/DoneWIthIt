@@ -13,6 +13,7 @@ const validationSchema = yup.object().shape({
   email: yup.string().required().label("Email"),
   password: yup.string().min(5).required().label("Password"),
 });
+
 function RegisterScreen(props) {
   return (
     <SafeAreaView style={styles.container}>
