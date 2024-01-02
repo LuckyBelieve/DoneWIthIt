@@ -7,6 +7,7 @@ import { StyleSheet } from "react-native";
 import { Link } from "@react-navigation/native";
 import colors from "../config/colors";
 import AppText from "../components/AppText";
+import routes from "../navigation/routes";
 
 const validationSchema = yup.object().shape({
   name: yup.string().required().max(255).label("Name"),
@@ -41,7 +42,7 @@ function RegisterScreen(props) {
           secureTextEntry={true}
         />
         <SubmitButton title={"Register"}/>
-        <AppText style={styles.text}>already have an account? <Link style={styles.link} to={"/Login"}>Login</Link></AppText>
+        <AppText style={styles.text}>already have an account? <Link style={styles.link} to={`/${routes.LOGIN}`}>Login</Link></AppText>
       </AppForm>
       <StatusBar style="auto" />
     </SafeAreaView>

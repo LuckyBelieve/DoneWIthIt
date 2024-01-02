@@ -4,6 +4,7 @@ import { FlatList, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Card from "../components/Card";
 import colors from "../config/colors";
+import routes from "../navigation/routes";
 const listings = [
   {
     id: 1,
@@ -29,7 +30,7 @@ function ListingsScreen({ navigation }) {
             image={item.image}
             title={item.title}
             subtitle={"$" + item.price}
-            onPress={() => navigation.navigate("ListingDetails", item)}
+            onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
           />
         )}
       />

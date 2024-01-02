@@ -7,6 +7,7 @@ import { AppForm, SubmitButton, AppFormField } from "../components/Forms";
 import AppText from "../components/AppText";
 import { Link } from "@react-navigation/native";
 import colors from "../config/colors";
+import routes from "../navigation/routes";
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
   password: Yup.string().required().min(5).max(20).label("Password"),
@@ -37,7 +38,7 @@ function LoginScreen(props) {
           secureTextEntry={true}
         />
         <SubmitButton title={"Login"} />
-        <AppText style={styles.text}>don't have an account? <Link style={styles.link} to={"/Register"}>Register</Link></AppText>
+        <AppText style={styles.text}>don't have an account? <Link style={styles.link} to={`/${routes.REGISTER}`}>Register</Link></AppText>
       </AppForm>
       <StatusBar style="auto" />
     </SafeAreaView>

@@ -33,7 +33,7 @@ function MessagesScreen(props) {
     setMessage(messages.filter((m) => m.id !== message.id));
   };
   return (
-    <SafeAreaView style={styles.screen}>
+    <View style={styles.screen}>
       <View style={styles.container}>
       <FlatList
         data={messages}
@@ -64,7 +64,7 @@ function MessagesScreen(props) {
       />
       </View>
       <StatusBar style="auto" />
-    </SafeAreaView>
+    </View>
   );
 }
 const styles = StyleSheet.create({

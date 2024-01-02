@@ -20,9 +20,10 @@ const menuItems = [
       name: "email",
       backgroundColor: colors.secondary,
     },
+    targetScreen:"Messages"
   },
 ];
-function AccountScreen(props) {
+function AccountScreen({navigation}) {
   return (
     <SafeAreaView style={styles.screen}>
       <View style={styles.container}>
@@ -45,7 +46,7 @@ function AccountScreen(props) {
                   backgroundColor={item.icon.backgroundColor}
                 />
               }
-              onPress={() => console.log("clickedlistings")}
+              onPress={() => navigation.navigate(item.targetScreen)}
             />
           )}
           ItemSeparatorComponent={ListSeparator}
