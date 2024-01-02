@@ -1,10 +1,12 @@
-import React from 'react'
-import { StyleSheet} from "react-native";
-import ListingEditScreen from "./app/screens/ListingEditScreen";
+import React from "react";
+import { StyleSheet } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import AuthNavigator from "./app/navigation/AuthNavigator";
 function App(props) {
-  
   return (
-   <ListingEditScreen/>
+    <NavigationContainer>
+      <AuthNavigator />
+    </NavigationContainer>
   );
 }
 const styles = StyleSheet.create({
