@@ -8,7 +8,7 @@ import AppNavigator from "./app/navigation/AppNavigator";
 function App(props) {
   return (
     <NavigationContainer theme={NavigationTheme}>
-      <AuthNavigator />
+      <AppNavigator />
     </NavigationContainer>
   );
 }

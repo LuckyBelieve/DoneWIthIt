@@ -9,11 +9,11 @@ import {
 import colors from "../config/colors";
 import AppText from "./AppText";
 
-function Card({ title, subtitle, image, onPress }) {
+function Card({ title, subtitle, imageUrl, onPress }) {
   return (
     <TouchableWithoutFeedback onPress={onPress}>
-      <View style={styles.card}>
-        <Image style={styles.image} source={image} />
+      <View style={styles.card}> 
+        <Image style={styles.image} source={{uri:imageUrl}} />
         <View style={styles.detailsContainer}>
           <AppText>{title}</AppText>
           <AppText style={styles.subtitle}>{subtitle}</AppText>
