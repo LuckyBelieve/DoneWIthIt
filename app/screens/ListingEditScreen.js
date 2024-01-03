@@ -8,6 +8,7 @@ import AppFormPicker from "../components/Forms/AppFormPicker";
 import CategoryPickerItem from "../components/CategoryPickerItem";
 import FormImagePicker from "../components/Forms/FormImagePicker";
 import useLocation from "../hooks/useLocation";
+import listingAPI from "../APIs/listings";
 
 // yup validation schema
 
@@ -30,7 +31,13 @@ const categories = [
 // main function
 
 function ListingEditScreen(props) {
-   const location = useLocation();
+  const location = useLocation();
+
+  const handlesubmit = async (values) => {
+    const result = await listingAPI.addListing(values);
+    if (!result.ok) return alert("could not add listing");
+    alert("successfully added listing");
+  };
   return (
     <SafeAreaView style={styles.container}>
       <AppForm
@@ -41,7 +48,7 @@ function ListingEditScreen(props) {
           description: "",
           images: [],
         }}
-        onSubmit={(values) => console.log(location)}
+        onSubmit={(values)=>handlesubmit(values)}
         validationSchema={validationSchema}
       >
         <FormImagePicker name={"images"} />
