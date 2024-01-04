@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { AppForm, AppFormField, SubmitButton } from "../components/Forms";
@@ -9,6 +9,7 @@ import CategoryPickerItem from "../components/CategoryPickerItem";
 import FormImagePicker from "../components/Forms/FormImagePicker";
 import useLocation from "../hooks/useLocation";
 import listingAPI from "../APIs/listings";
+import UploadScreen from "./UploadScreen";
 
 // yup validation schema
 
@@ -32,14 +33,20 @@ const categories = [
 
 function ListingEditScreen(props) {
   const location = useLocation();
+  const [uploadVisible, setUploadVisible] = useState(false);
 
-  const handlesubmit = async (values) => {
+  const handlesubmit = async (values, { resetForm }) => {
+    setUploadVisible(true);
     const result = await listingAPI.addListing(values);
-    if (!result.ok) return alert("could not add listing");
-    alert("successfully added listing");
+    setTimeout(() => setUploadVisible(false), 2500);
+    resetForm();
   };
   return (
     <SafeAreaView style={styles.container}>
+      <UploadScreen
+        onDone={() => setUploadVisible(false)}
+        visible={uploadVisible}
+      />
       <AppForm
         initialValues={{
           title: "",
@@ -48,7 +55,7 @@ function ListingEditScreen(props) {
           description: "",
           images: [],
         }}
-        onSubmit={(values)=>handlesubmit(values)}
+        onSubmit={handlesubmit}
         validationSchema={validationSchema}
       >
         <FormImagePicker name={"images"} />

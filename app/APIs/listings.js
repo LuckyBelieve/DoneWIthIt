@@ -4,7 +4,7 @@ const endpoint = "/listings";
 const getListings = () => client.get(endpoint);
 
 const addListing = (listing) => {
-    console.log(listing);
+    
   const data = new FormData();
   data.append("title", listing.title);
   data.append("price", listing.price);
