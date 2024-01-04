@@ -3,7 +3,7 @@ import { Modal, StyleSheet, View } from "react-native";
 import * as Progress from "react-native-progress";
 import colors from "../config/colors";
 import LottieView from "lottie-react-native";
-function UploadScreen({ onDone,visible = false }) {
+function UploadScreen({ onDone, visible = false }) {
   const [progress, setProgress] = useState(0.5);
   setTimeout(() => setProgress(1), 1000);
 
@@ -31,8 +31,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  animation:{
-    width:400
-  }
+  animation: {
+    width: 400,
+  },
 });
 export default UploadScreen;

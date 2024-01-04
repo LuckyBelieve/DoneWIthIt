@@ -7,11 +7,11 @@ import ActivityIndicator from "../components/ActivityIndicator";
 import Card from "../components/Card";
 import colors from "../config/colors";
 import routes from "../navigation/routes";
+import AppText from "../components/AppText";
+import Button from "../components/Button";
 
 // api
 import listingsAPI from "../APIs/listings";
-import AppText from "../components/AppText";
-import Button from "../components/Button";
 import useAPI from "../hooks/useAPI";
 
 function ListingsScreen({ navigation }) {

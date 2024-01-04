@@ -1,7 +1,5 @@
 import React from "react";
-import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-
 
 import AuthNavigator from "./app/navigation/AuthNavigator";
 import NavigationTheme from "./app/navigation/NavigationTheme";
@@ -17,7 +15,5 @@ function App(props) {
     </>
   );
 }
-const styles = StyleSheet.create({
-  container: {},
-});
+
 export default App;
