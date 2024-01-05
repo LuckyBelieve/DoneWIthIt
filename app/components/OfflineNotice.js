@@ -6,15 +6,12 @@ import AppText from "./AppText";
 import colors from "../config/colors";
 function OfflineNotice(props) {
   const netInfo = useNetInfo();
-
   if (netInfo.type !== "unknown" && netInfo.isInternetReachable === false)
     return (
       <View style={styles.container}>
         <AppText style={styles.text}>No internet connection</AppText>
       </View>
     );
-
-  return null;
 }
 const styles = StyleSheet.create({
   container: {
