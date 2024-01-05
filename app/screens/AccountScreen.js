@@ -1,11 +1,13 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useContext } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ListItem from "../components/Lists/ListItem";
 import { FlatList, StyleSheet, View } from "react-native";
 import colors from "../config/colors";
 import Icon from "../components/Icon";
 import ListSeparator from "../components/Lists/ListSeparator";
+import AuthContext from "../Auth/context";
+import AuthStorage from "../Auth/storage";
 const menuItems = [
   {
     title: "My listings",
@@ -20,16 +22,22 @@ const menuItems = [
       name: "email",
       backgroundColor: colors.secondary,
     },
-    targetScreen:"Messages"
+    targetScreen: "Messages",
   },
 ];
-function AccountScreen({navigation}) {
+function AccountScreen({ navigation }) {
+  const { user, setUser } = useContext(AuthContext);
+
+  const handleLogout = ()=>{
+    setUser(null);
+    AuthStorage.removeToken();
+  }
   return (
     <SafeAreaView style={styles.screen}>
       <View style={styles.container}>
         <ListItem
-          title={"Mosh Hamedani"}
-          subtitle={"programmingwithmosh@gmail.com"}
+          title={user.name}
+          subtitle={user.email}
           image={require("../assets/mosh.jpg")}
         />
       </View>
@@ -58,9 +66,9 @@ function AccountScreen({navigation}) {
           <Icon
             name={"logout"}
             backgroundColor="#ffe66d"
-            onPress={() => console.log("clickedlistings")}
-          />
-        }
+            />
+          }
+        onPress={handleLogout}
       />
       <StatusBar style="auto" />
     </SafeAreaView>

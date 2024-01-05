@@ -1,24 +1,49 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Image, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { jwtDecode } from "jwt-decode";
 import * as Yup from "yup";
-import { AppForm, SubmitButton, AppFormField } from "../components/Forms";
+import {
+  ErrorMessage,
+  AppForm,
+  SubmitButton,
+  AppFormField,
+} from "../components/Forms";
 import AppText from "../components/AppText";
 import { Link } from "@react-navigation/native";
 import colors from "../config/colors";
 import routes from "../navigation/routes";
+import AuthApi from "../APIs/Auth";
+import AuthContext from "../Auth/context";
+import AuthStorage from "../Auth/storage";
+
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
   password: Yup.string().required().min(5).max(20).label("Password"),
 });
+
 function LoginScreen(props) {
+  const authContext = useContext(AuthContext);
+  const [loginfailed, setLoginFailed] = useState(false);
+  const hundleSubmit = async ({ email, password }) => {
+    const result = await AuthApi.login(email, password);
+    if (!result.ok) return setLoginFailed(true);
+    setLoginFailed(false);
+
+    authContext.setUser(result.data); 
+    AuthStorage.storeToken(result.data);
+  };
   return (
     <SafeAreaView style={styles.container}>
       <Image style={styles.logo} source={require("../assets/logo-red.png")} />
+      <ErrorMessage
+        error={"Invalid email and/or password"}
+        visible={loginfailed}
+      />
       <AppForm
         initialValues={{ email: "", password: "" }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={hundleSubmit}
         validationSchema={validationSchema}
       >
         <AppFormField
@@ -38,7 +63,12 @@ function LoginScreen(props) {
           secureTextEntry={true}
         />
         <SubmitButton title={"Login"} />
-        <AppText style={styles.text}>don't have an account? <Link style={styles.link} to={`/${routes.REGISTER}`}>Register</Link></AppText>
+        <AppText style={styles.text}>
+          don't have an account?{" "}
+          <Link style={styles.link} to={`/${routes.REGISTER}`}>
+            Register
+          </Link>
+        </AppText>
       </AppForm>
       <StatusBar style="auto" />
     </SafeAreaView>
@@ -55,12 +85,12 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 10,
   },
-  text:{
+  text: {
     fontSize: 14,
-    textAlign:"center"
+    textAlign: "center",
   },
-  link:{
-    color:colors.danger
-  }
+  link: {
+    color: colors.danger,
+  },
 });
 export default LoginScreen;
