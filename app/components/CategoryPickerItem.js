@@ -6,10 +6,14 @@ import { TouchableWithoutFeedback } from "react-native";
 function CategoryPickerItem({ item, onPress }) {
   return (
     <TouchableWithoutFeedback onPress={onPress}>
-    <View style={styles.container}>
-      <Icon backgroundColor={item.backgroundColor} name={item.icon} size={60} />
-      <AppText>{item.label}</AppText>
-    </View>
+      <View style={styles.container}>
+        <Icon
+          backgroundColor={item.backgroundColor}
+          name={item.icon}
+          size={60}
+        />
+        <AppText>{item.label}</AppText>
+      </View>
     </TouchableWithoutFeedback>
   );
 }

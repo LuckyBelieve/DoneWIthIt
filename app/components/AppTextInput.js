@@ -11,7 +11,7 @@ function AppTextInput({ icon, ...otherProps }) {
       )}
       <TextInput
         placeholderTextColor={colors.medium}
-        autoCapitalize="none" 
+        autoCapitalize="none"
         style={defaultStyles.text}
         {...otherProps}
       />

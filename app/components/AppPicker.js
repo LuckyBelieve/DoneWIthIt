@@ -11,7 +11,15 @@ import colors from "../config/colors";
 import AppText from "./AppText";
 import { Modal } from "react-native";
 import PickerItem from "./PickerItem";
-function AppPicker({ items, icon, placeholder, selectedItem, onSelectItem,PickerItemComponent = PickerItem,numberOfColumns }) {
+function AppPicker({
+  items,
+  icon,
+  placeholder,
+  selectedItem,
+  onSelectItem,
+  PickerItemComponent = PickerItem,
+  numberOfColumns,
+}) {
   const [ModalVisible, setModalVisible] = useState(false);
   return (
     <>
