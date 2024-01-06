@@ -16,7 +16,10 @@ function WelcomeScreen({ navigation }) {
         <Text style={styles.tagLine}>sell what you don't need</Text>
       </View>
       <View style={styles.buttonsContainer}>
-        <Button title={"Login"} onpress={() => navigation.navigate(routes.LOGIN)} />
+        <Button
+          title={"Login"}
+          onpress={() => navigation.navigate(routes.LOGIN)}
+        />
         <Button
           title={"Register"}
           color="secondary"

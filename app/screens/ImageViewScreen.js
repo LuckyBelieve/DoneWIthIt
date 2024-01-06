@@ -4,17 +4,20 @@ import colors from "../config/colors";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import {MaterialCommunityIcons} from "@expo/vector-icons"
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 function ImageViewScreen(props) {
-  return (  
+  return (
     <SafeAreaView style={styles.container}>
       <View>
         <View style={styles.closeButton}>
-          <MaterialCommunityIcons name="close" color={"white"} size={35}/>
+          <MaterialCommunityIcons name="close" color={"white"} size={35} />
         </View>
         <View style={styles.deleteButton}>
-        <MaterialCommunityIcons name="trash-can-outline" color={"white"} size={35}/>
-
+          <MaterialCommunityIcons
+            name="trash-can-outline"
+            color={"white"}
+            size={35}
+          />
         </View>
       </View>
       <Image

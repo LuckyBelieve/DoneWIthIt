@@ -16,7 +16,8 @@ const initialMessages = [
   {
     id: 2,
     title: "mosh hamedani",
-    description: "Hello there! I would like to discuss on the price for the camera that you posted",
+    description:
+      "Hello there! I would like to discuss on the price for the camera that you posted",
     image: require("../assets/mosh.jpg"),
   },
   {
@@ -35,33 +36,33 @@ function MessagesScreen(props) {
   return (
     <View style={styles.screen}>
       <View style={styles.container}>
-      <FlatList
-        data={messages}
-        keyExtractor={(message) => message.id.toString()}
-        renderItem={({ item }) => (
-          <ListItem
-            title={item.title}
-            subtitle={item.description}
-            image={item.image}
-            onPress={() => console.log("message selected: ", item)}
-            renderRightActions={() => (
-              <ListItemDeleteAction onPress={() => handleDelete(item)} />
-            )}
-          />
-        )}
-        ItemSeparatorComponent={ListSeparator}
-        refreshing={refreshing}
-        onRefresh={() => {
-          setMessage([
-            {
-              id: 3,
-              title: "title3",
-              description: "description3",
-              image: require("../assets/mosh.jpg"),
-            },
-          ]);
-        }}
-      />
+        <FlatList
+          data={messages}
+          keyExtractor={(message) => message.id.toString()}
+          renderItem={({ item }) => (
+            <ListItem
+              title={item.title}
+              subtitle={item.description}
+              image={item.image}
+              onPress={() => console.log("message selected: ", item)}
+              renderRightActions={() => (
+                <ListItemDeleteAction onPress={() => handleDelete(item)} />
+              )}
+            />
+          )}
+          ItemSeparatorComponent={ListSeparator}
+          refreshing={refreshing}
+          onRefresh={() => {
+            setMessage([
+              {
+                id: 3,
+                title: "title3",
+                description: "description3",
+                image: require("../assets/mosh.jpg"),
+              },
+            ]);
+          }}
+        />
       </View>
       <StatusBar style="auto" />
     </View>
@@ -71,9 +72,9 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
   },
-  container:{
-    flex:1
-  }
+  container: {
+    flex: 1,
+  },
 });
 
 export default MessagesScreen;
