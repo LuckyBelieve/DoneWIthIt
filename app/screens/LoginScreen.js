@@ -31,7 +31,7 @@ function LoginScreen(props) {
     if (!result.ok) return setLoginFailed(true);
     setLoginFailed(false);
 
-    authContext.setUser(result.data); 
+    authContext.setUser(result.data);
     AuthStorage.storeToken(result.data);
   };
   return (

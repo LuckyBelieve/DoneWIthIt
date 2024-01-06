@@ -28,10 +28,10 @@ const menuItems = [
 function AccountScreen({ navigation }) {
   const { user, setUser } = useContext(AuthContext);
 
-  const handleLogout = ()=>{
+  const handleLogout = () => {
     setUser(null);
     AuthStorage.removeToken();
-  }
+  };
   return (
     <SafeAreaView style={styles.screen}>
       <View style={styles.container}>
@@ -62,12 +62,7 @@ function AccountScreen({ navigation }) {
       </View>
       <ListItem
         title={"Logout"}
-        ImageComponent={
-          <Icon
-            name={"logout"}
-            backgroundColor="#ffe66d"
-            />
-          }
+        ImageComponent={<Icon name={"logout"} backgroundColor="#ffe66d" />}
         onPress={handleLogout}
       />
       <StatusBar style="auto" />
